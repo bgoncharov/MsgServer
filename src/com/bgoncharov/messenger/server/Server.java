@@ -23,7 +23,6 @@ public class Server {
                 running = true;
                 manage();
                 recieve();
-
             }
         }, "serverRun");
 
@@ -35,15 +34,12 @@ public class Server {
                     while (running) {
                         //TODO: manage the clients
                     }
-
                 }
             });
             manage.start();
-
         }
 
         private void recieve () {
-
             recieve = new Thread(new Runnable() {
 
                 @Override
@@ -51,11 +47,9 @@ public class Server {
                     while (running) {
                         //TODO: manage the clients
                     }
-
                 }
             });
             recieve.start();
-
         }
     }
 }
