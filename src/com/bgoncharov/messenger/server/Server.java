@@ -28,7 +28,6 @@ public class Server {
 
         private void manage () {
             manage = new Thread(new Runnable() {
-
                 @Override
                 public void run() {
                     while (running) {
@@ -41,7 +40,6 @@ public class Server {
 
         private void recieve () {
             recieve = new Thread(new Runnable() {
-
                 @Override
                 public void run() {
                     while (running) {
