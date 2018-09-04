@@ -23,7 +23,7 @@ public class Server {
             @Override
             public void run() {
                 running = true;
-                System.out.println("Server started on port: " + port);
+                System.out.println("Server started on port: " + port + ". Enjoy!");
                 manage();
                 recieve();
             }
