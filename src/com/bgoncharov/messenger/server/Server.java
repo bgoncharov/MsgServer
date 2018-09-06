@@ -4,9 +4,12 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.SocketException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Server {
 
+    private List<ServerClient> clients = new ArrayList<ServerClient>();
     private int port;
     private DatagramSocket socket;
     private Thread serverRun, manage, recieve;
@@ -56,6 +59,8 @@ public class Server {
                             e.printStackTrace();
                         }
                         String str = new String(packet.getData());
+                        clients.add(new ServerClient("Jones", packet.getAddress(), packet.getPort(), 2323));
+                        System.out.println(clients.get(0).address.toString() + ":" + clients.get(0).port);
                         System.out.println(str);
                     }
                 }
