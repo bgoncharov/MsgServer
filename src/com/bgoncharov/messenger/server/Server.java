@@ -58,13 +58,22 @@ public class Server {
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
-                        String str = new String(packet.getData());
+                        process(packet);
                         clients.add(new ServerClient("Jones", packet.getAddress(), packet.getPort(), 2323));
                         System.out.println(clients.get(0).address.toString() + ":" + clients.get(0).port);
-                        System.out.println(str);
                     }
                 }
             }, "recieve");
             recieve.start();
+        }
+
+        private void process(DatagramPacket packet){
+            String str = new String(packet.getData());
+            if(str.startsWith("/c/")) {
+                clients.add(new ServerClient(str.substring(3, str.length()), packet.getAddress(), packet.getPort(), 2323));
+                System.out.println(str.substring(3, str.length()));
+            } else  {
+                System.out.println(str);
+            }
         }
     }
