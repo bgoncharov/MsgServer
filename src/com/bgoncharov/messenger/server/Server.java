@@ -70,7 +70,9 @@ public class Server {
         private void process(DatagramPacket packet){
             String str = new String(packet.getData());
             if(str.startsWith("/c/")) {
-                clients.add(new ServerClient(str.substring(3, str.length()), packet.getAddress(), packet.getPort(), 2323));
+                int id = UniqueID.getID();
+                clients.add(new ServerClient(str.substring(3, str.length()), packet.getAddress(), packet.getPort(), id));
+                System.out.println(id);
                 System.out.println(str.substring(3, str.length()));
             } else  {
                 System.out.println(str);
